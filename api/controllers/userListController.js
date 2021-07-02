@@ -29,12 +29,8 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
-//   const { name, email } = request.body
-    const user = new user({
-        name: request.body.name,
-        email: request.body.email
-       
-    });
+  const { name, email } = request.body
+  
 
   pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [user.name, user.email], (error, results) => {
     if (error) {
